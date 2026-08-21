@@ -1,0 +1,31 @@
+name: Release
+
+# 仅在推送到 v* 版本标签时触发。当前项目尚未发布（0.1.0 开发阶段）：
+# 需要时先配置 npm NPM_TOKEN secret（npm 账户需有发布权限），再推送如 v0.1.0 标签。
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
