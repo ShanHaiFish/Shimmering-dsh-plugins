@@ -30,7 +30,7 @@
 
 ```bash
 # 第三方插件管理器（建议第一个安装，之后可用它管理其余插件；源码在本仓库 plugins/ 目录）
-dsh plugin --profile web add "github:ShanHaiFish/dsh-plugins#main:plugins/dsh-plugin-manager-lite"
+dsh plugin --profile web add "github:ShanHaiFish/dsh-plugins#path:plugins/dsh-plugin-manager-lite"
 
 # DSH 更新检查
 dsh plugin --profile web add github:ShanHaiFish/dsh-check-for-updates
@@ -56,7 +56,7 @@ dsh plugin --profile web add github:ShanHaiFish/sent-msg-locator#v2.3.5
 - 插件均为**静态 bundle 插件**（`package.json` 声明 `dsh.bundle.patch` + web UI client bundle）。
 - 安装后需**重启 DSH**（如 `dsh web`）才生效；Host 从 `~/.dsh/profiles/<profile>/node_modules/<包名>/` 解析并服务插件。
 - 插件间相互独立，可按需任意组合安装；停用/卸载可用 [dsh-plugin-manager-lite](https://github.com/ShanHaiFish/dsh-plugins/tree/main/plugins/dsh-plugin-manager-lite) 在设置页完成。
-- 刚发布的新插件托管在本仓库 `plugins/<包名>/`，安装 spec 为 `github:ShanHaiFish/dsh-plugins#main:plugins/<包名>`；其原独立仓库（如 `dsh-plugin-manager-lite`）归档仅作历史存档，归档仓库仍可克隆，老 spec 安装不受影响。
+- 刚发布的新插件托管在本仓库 `plugins/<包名>/`，安装 spec 为 `github:ShanHaiFish/dsh-plugins#path:plugins/<包名>`（pnpm `#path:` 子目录语法，已实测可用）；其原独立仓库（如 `dsh-plugin-manager-lite`）归档仅作历史存档，归档仓库仍可克隆，老 spec 安装不受影响。
 
 ## 反馈与贡献
 

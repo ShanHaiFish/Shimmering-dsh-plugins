@@ -37,7 +37,7 @@
 dsh plugin --profile web add dsh-plugin-manager-lite
 
 # 从 GitHub（dsh-plugins monorepo 子目录）
-dsh plugin --profile web add "github:ShanHaiFish/dsh-plugins#main:plugins/dsh-plugin-manager-lite"
+dsh plugin --profile web add "github:ShanHaiFish/dsh-plugins#path:plugins/dsh-plugin-manager-lite"
 
 # 本地目录（开发期）
 dsh plugin --profile web add /path/to/dsh-plugins/plugins/dsh-plugin-manager-lite
