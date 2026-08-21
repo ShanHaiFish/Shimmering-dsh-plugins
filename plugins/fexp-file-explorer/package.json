@@ -1,0 +1,50 @@
+{
+  "name": "fexp-file-explorer",
+  "description": "DSH 静态 bundle 插件：在左侧工作区浏览目录与文件。双入口（文件浏览/打开目录）、320px 浏览面板、文件预览、一键打开系统资源管理器、文件引用添加到聊天。A static-bundle DSH plugin: workspace file explorer in the left sidebar.",
+  "version": "1.5.0",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": "./client/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "client",
+    "cordis.patch.yml",
+    "LICENSE",
+    "README.md",
+    "host-source.js",
+    "client-source.js",
+    "manifest.json"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShanHaiFish/fexp-file-explorer.git"
+  },
+  "keywords": [
+    "deepseek",
+    "harness",
+    "dsh",
+    "dsh-plugin",
+    "file-explorer",
+    "workspace",
+    "sidebar"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  }
+}

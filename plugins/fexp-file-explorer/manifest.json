@@ -1,0 +1,41 @@
+{
+  "schema": "dsh-dynamic-cordis-plugin",
+  "version": "1.5.1",
+  "plugin": {
+    "kind": "new",
+    "idPrefix": "fexp"
+  },
+  "name": "左侧文件浏览器",
+  "purpose": "在左侧工作区浏览目录与文件：侧栏顶部「文件浏览」+ 会话标题栏「打开目录」双入口，打开面板定位当前工作区目录，点击目录进入、点击文件预览内容；工具栏可一键在系统资源管理器中打开当前目录（DSH 原生 host.openPath，Windows 走 Invoke-Item）；预览文件时可一键把文件引用 [文件名](绝对路径) 添加到聊天输入框草稿，方便告诉 AI 具体文件信息。CAPABILITIES: fs, rpc",
+  "code": {
+    "host": "./host-source.js",
+    "client": "./client-source.js"
+  },
+  "slots": [
+    { "name": "shell.overlay", "id": "fexp-top-toggle", "order": 5, "description": "侧栏顶部「文件浏览」胶囊按钮（宽栏时显示，定位在「工作区」标题行右侧；工作区「搜索会话」搜索框展开时自动隐藏，避免遮挡）" },
+    { "name": "shell.overlay", "id": "fexp-panel", "order": 10, "description": "左侧 320px 文件浏览面板" },
+    { "name": "conversation.session.header.actions", "id": "fexp-header-toggle", "order": 30, "description": "会话标题栏「打开目录」按钮" },
+    { "name": "conversation.input.dock", "id": "fexp-input-bridge", "order": 0, "description": "隐藏输入桥（渲染 null）：捕获标准包 inputActions/useInput，供「添加到聊天」使用" },
+    { "name": "sidebar.footer.action", "id": "fexp-wide-probe", "order": 6, "description": "隐藏的侧栏宽窄探针（渲染 null，仅报告 wide 状态）" }
+  ],
+  "rpc": [
+    { "method": "default-root", "description": "返回当前工作区根目录（sandboxPolicy.workspaceRoot，兜底 fs.resolve('.')）" },
+    { "method": "list-dir", "args": "{ path }", "description": "列出目录内容（name/type/size）" },
+    { "method": "read-file", "args": "{ path, maxBytes? }", "description": "读取文本文件（默认 256KB 上限，最大 1MB）" }
+  ],
+  "notes": [
+    "host 源码在 host-source.js，client 源码在 client-source.js，均为 cordis_define 的 code 函数体原文。",
+    "恢复/重建时：用 cordis_define 以本文件的 plugin/name/purpose 与两个源码文件的内容重新定义（kind:new + idPrefix:fexp），再用 cordis_run 运行（首次需批准）。",
+    "动态插件不跨 DSH 进程存续；重启 DSH 后需按 README.md 重新加载。",
+    "v1.0.0 包含启动时序竞态修复：useStore 订阅后自愈同步 + sidebarWide 默认 true。",
+    "v1.1.0 新增「在系统资源管理器中打开」工具栏按钮：Client 直接调用 workspaces.openPath（即 DSH 原生 host.openPath，Windows 走 Invoke-Item），不新增 Host RPC、不引入 spawn/网络能力；安全审查保持 WARN(33/300)。",
+    "v1.2.0 新增预览区「添加到聊天」按钮（位于「关闭预览」左侧）：通过会话作用域插槽 conversation.input.dock 的隐藏桥捕获标准包 inputActions/useInput，把 [文件名](绝对路径) 追加到输入框草稿（不覆盖已有内容），由用户编辑后发送；纯 Client 能力，安全审查保持 WARN(33/300)。",
+    "v1.2.1 修复：移除「已添加」状态，按钮始终保持「添加到聊天」可用，支持连续多次添加文件（引用已直接可见于输入框，无需状态提示）。",
+    "v1.2.2 修复：「文件浏览」入口打开面板定位到上一个工作区目录——面板加载 effect 的 path===null 守卫导致之前浏览过（或进入过子目录）后关闭再打开、或切换工作区时都不重新加载。新增 boundWs 工作区绑定状态：打开面板/工作区切换时若 boundWs !== 当前 wsPath 则重新绑定并加载当前工作区目录，同一工作区重开仍保留上次浏览位置；「文件浏览」/「打开目录」统一走 openPanelFor，工具栏「当前工作区目录」统一走 bindWorkspace。Host 半区无改动。",
+    "v1.2.3 修复：「文件浏览」「打开目录」按钮在浅色主题下文字看不清——入口按钮颜色原为硬编码（文字 #e8edf3 近白、背景半透明灰），浅色主题下无对比。改为 CSS 类并全部使用主题 CSS 变量（文字 --dsw-alias-label-primary、背景 --dsw-alias-bg-layer-1/2、边框 --dsw-alias-border-l2、激活态 --dsw-alias-brand-primary），随任意主题自动适配保证对比，补充 hover 反馈。Host 半区无改动，安全审查保持 WARN(33/300)。",
+    "v1.3.0 图标改用 Lucide 官方图标库（https://lucide.dev，ISC 许可，lucide-static v1.31.0）的 path：关闭面板=panel-left-close（面板+左箭头）、当前工作区目录=briefcase（公文包）、回到根目录=house（标准房子）、上一级=folder-up（文件夹+上箭头）、刷新=refresh-cw（完整循环箭头）、在系统资源管理器中打开=folder-open（打开的文件夹）、关闭预览=x（标准关闭），语义更直观。Host 半区无改动，安全审查保持 WARN(33/300)。",
+    "v1.4.0 图标整体改用 Google Material Icons 官方库（https://fonts.google.com/icons，Apache 2.0 许可，@material-design-icons/svg outlined 变体）：关闭面板=keyboard_double_arrow_left（« 收起，与 VS Code 侧栏一致）、当前工作区=workspaces（Material 标准工作区图标）、回到根目录=home、上一级=arrow_upward、刷新=refresh（Chrome/Android 同款弧线）、资源管理器打开=folder_open、关闭预览=close、文件/文件夹/聊天=description/folder/chat。实心填充风格（svgIcon 改 fill=currentColor 渲染），小尺寸下清晰锐利，符合大厂产品视觉标准；默认图标尺寸 14→16px。Host 半区无改动，安全审查保持 WARN(33/300)。",
+    "v1.5.0 静态 bundle 化：新增 package.json（dsh.bundle.patch + dsh.client.platform=web）+ cordis.patch.yml + lib/index.js（Host 半区：webServer 挂 /fexp/default-root、/fexp/list-dir、/fexp/read-file 三个 JSON 路由）+ client/client.js（Client 半区：__ModuleLoader__.load 注册，host.call→fetch 路由、styles.insert→自建 style 标签）。随 profile 层栈自动加载，启动 DSH 后无需手动 define/run（安装：dsh plugin --profile web add fexp-file-explorer）。host-source.js/client-source.js 保留为动态插件回退形态。安全审查持平 WARN(33/300)。",
+    "v1.5.1 修复：工作区「搜索会话」搜索框展开时「文件浏览」入口按钮遮挡搜索框——固定定位(top:126px/left:70px)的按钮正好叠在展开的搜索框上挡住输入。TopToggle 新增 MutationObserver 监听搜索按钮 aria-expanded 状态（搜索按钮展开时 aria-expanded=\"true\" 且下一个兄弟元素为 input[type=text]，与同样带 aria-expanded 的会话行/分组折叠按钮可区分），搜索框展开期间隐藏入口按钮、收起后自动恢复；Host 半区无改动，纯 Client 能力，安全审查持平 WARN(33/300)。"
+  ]
+}
