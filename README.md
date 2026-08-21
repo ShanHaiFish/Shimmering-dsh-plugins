@@ -3,9 +3,9 @@
 > **Shimmering DSH Plugin Library** —— [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/dsh) 第三方插件集 · 插件组主页
 > 由 [@ShanHaiFish](https://github.com/ShanHaiFish) 开发维护 · 仓库：[ShanHaiFish/dsh-plugins](https://github.com/ShanHaiFish/dsh-plugins)
 
-本仓库是 **DSH 插件组的索引主页**：汇总全部插件、功能简介与一键安装命令。
+这里是「**闪烁的 DSH 插件库**」的索引主页：汇总全部插件、功能简介与一键安装命令。
 **本仓库只做链接归组，不托管插件源码**——每个插件都是独立仓库，独立更新、独立打 tag、独立发布 Release，互不影响。
-插件通过 GitHub 标签 [`dsh-plugin`](https://github.com/ShanHaiFish?tab=repositories&q=topic%3Adsh-plugin) 归组，新插件打上该标签即自动入组。
+插件通过 GitHub 标签 [`dsh-plugin`](https://github.com/ShanHaiFish?tab=repositories&q=topic%3Adsh-plugin) 归组，新插件打上该标签即自动入库。
 
 ## 插件一览
 
