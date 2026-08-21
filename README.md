@@ -9,13 +9,15 @@
 
 ## 插件一览
 
-| 插件 | 版本 | 功能 |
-|---|---|---|
-| [dsh-plugin-manager-lite](https://github.com/ShanHaiFish/dsh-plugin-manager-lite) | v0.1.0 | 第三方插件管理器：列表 / 启用 / 停用 / 卸载 / 检查更新 / npm 一键安装升级（设置页「插件 → 第三方插件」） |
-| [dsh-check-for-updates](https://github.com/ShanHaiFish/dsh-check-for-updates) | v1.12.0 | DSH 更新检查：首次打开自动检查 npm 最新版本，左下方更新弹窗 +【更新到】按钮一键升级 |
-| [dsh-plugin-security-review](https://github.com/ShanHaiFish/dsh-plugin-security-review) | v1.8.0 | 插件安装安全审查守卫：`dsh plugin add` 前的安全审查闸门（security-first） |
-| [sent-msg-locator](https://github.com/ShanHaiFish/sent-msg-locator) | v2.3.5 | 对话区左缘轮次图标列，点击定位到每轮用户输入文本 |
-| [fexp-file-explorer](https://github.com/ShanHaiFish/fexp-file-explorer) | v1.5.1 | 左侧工作区文件浏览器：目录/文件浏览、文件预览、一键打开资源管理器、文件引用添加到聊天 |
+> 排序规则：按 star 数降序（同 star 按字母序），顺序手动维护。
+
+| 插件 | Stars | 版本 | 功能 |
+|---|---|---|---|
+| [dsh-plugin-security-review](https://github.com/ShanHaiFish/dsh-plugin-security-review) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-plugin-security-review?style=social) | v1.8.0 | 插件安装安全审查守卫：`dsh plugin add` 前的安全审查闸门（security-first） |
+| [sent-msg-locator](https://github.com/ShanHaiFish/sent-msg-locator) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/sent-msg-locator?style=social) | v2.3.5 | 对话区左缘轮次图标列，点击定位到每轮用户输入文本 |
+| [dsh-check-for-updates](https://github.com/ShanHaiFish/dsh-check-for-updates) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-check-for-updates?style=social) | v1.12.0 | DSH 更新检查：首次打开自动检查 npm 最新版本，左下方更新弹窗 +【更新到】按钮一键升级 |
+| [dsh-plugin-manager-lite](https://github.com/ShanHaiFish/dsh-plugin-manager-lite) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-plugin-manager-lite?style=social) | v0.1.0 | 第三方插件管理器：列表 / 启用 / 停用 / 卸载 / 检查更新 / npm 一键安装升级（设置页「插件 → 第三方插件」） |
+| [fexp-file-explorer](https://github.com/ShanHaiFish/fexp-file-explorer) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/fexp-file-explorer?style=social) | v1.5.1 | 左侧工作区文件浏览器：目录/文件浏览、文件预览、一键打开资源管理器、文件引用添加到聊天 |
 
 ## 安装
 
@@ -27,17 +29,17 @@
 以 `web` profile 为例（其他 profile 替换 `--profile` 参数）。当前插件均未发布 npm，统一从 GitHub 安装：
 
 ```bash
-# 第三方插件管理器（建议第一个安装，之后可用它管理其余插件）
-dsh plugin --profile web add github:ShanHaiFish/dsh-plugin-manager-lite
-
-# DSH 更新检查
-dsh plugin --profile web add github:ShanHaiFish/dsh-check-for-updates
-
 # 插件安装安全审查守卫
 dsh plugin --profile web add github:ShanHaiFish/dsh-plugin-security-review
 
 # 对话轮次定位
 dsh plugin --profile web add github:ShanHaiFish/sent-msg-locator
+
+# DSH 更新检查
+dsh plugin --profile web add github:ShanHaiFish/dsh-check-for-updates
+
+# 第三方插件管理器（建议第一个安装，之后可用它管理其余插件）
+dsh plugin --profile web add github:ShanHaiFish/dsh-plugin-manager-lite
 
 # 工作区文件浏览器
 dsh plugin --profile web add github:ShanHaiFish/fexp-file-explorer
