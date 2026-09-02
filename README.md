@@ -1,5 +1,7 @@
 # 闪烁的 DSH 插件库
 
+[English](README.en.md) · [简体中文](README.md)
+
 > **Shimmering-dsh-plugins** —— [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness) 第三方插件集 · 插件组主页
 > 由 [@ShanHaiFish](https://github.com/ShanHaiFish) 开发维护 · 仓库：[ShanHaiFish/Shimmering-dsh-plugins](https://github.com/ShanHaiFish/Shimmering-dsh-plugins)
 
@@ -23,7 +25,7 @@
 
 前置要求：
 
-- DeepSeek Harness（`dsh`）`0.1.0-rc.7`+（developer preview，字段可能变化）
+- DeepSeek Harness（`dsh`）`0.1.1-rc.2`+（npm latest；developer preview，字段可能变化）。插件 `peerDependencies` 亦以此版本为对齐基线
 - Node.js `>=18`
 
 以 `web` profile 为例（其他 profile 替换 `--profile` 参数）。插件均已发布 npm，按包名直接安装：
