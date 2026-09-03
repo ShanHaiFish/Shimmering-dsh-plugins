@@ -16,7 +16,7 @@
 | 插件 | Stars | 版本 | 功能 |
 |---|---|---|---|
 | [dsh-plugin-security-review](https://github.com/ShanHaiFish/dsh-plugin-security-review) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-plugin-security-review?style=social) | v1.8.1 | 插件安装安全审查守卫：`dsh plugin add` 前的安全审查闸门（security-first） |
-| [dsh-check-for-updates](https://github.com/ShanHaiFish/dsh-check-for-updates) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-check-for-updates?style=social) | v1.13.2 | DSH 更新检查：首次打开自动检查 npm 最新版本，左下方更新弹窗 +【更新到】按钮一键升级 |
+| [dsh-check-for-updates](https://github.com/ShanHaiFish/dsh-check-for-updates) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-check-for-updates?style=social) | v1.13.3 | DSH 更新检查：自动检查 npm 实际最高版本（semver 排序，RC 优先于 Alpha），左下方更新弹窗 +【安排更新】分离式两阶段更新器（退出 DSH 后自动安装，退出码/对盘/koffi 三重校验 + 断链自愈） |
 | [dsh-plugin-manager-lite](https://github.com/ShanHaiFish/dsh-plugin-manager-lite) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-plugin-manager-lite?style=social) | v0.1.1 | 第三方插件管理器：列表 / 启用 / 停用 / 卸载 / 检查更新 / npm 一键安装升级（设置页「插件 → 第三方插件」） |
 | [dsh-theme-brick](https://github.com/ShanHaiFish/dsh-theme-brick) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-theme-brick?style=social) | v0.2.1 | DSH 主题（Brick/砌砖）：暖石膏与烧制陶土配色、砖缝线条，纯 token 覆盖层零全局 CSS，设置页一键开关还原 |
 | [fexp-file-explorer](https://github.com/ShanHaiFish/fexp-file-explorer) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/fexp-file-explorer?style=social) | v1.6.1 | 左侧工作区文件浏览器：目录/文件浏览、文件预览、一键打开资源管理器、文件引用添加到聊天 |
@@ -50,7 +50,7 @@ dsh plugin --profile web add fexp-file-explorer
 安装指定版本（`@版本号`）：
 
 ```bash
-dsh plugin --profile web add dsh-check-for-updates@1.13.2
+dsh plugin --profile web add dsh-check-for-updates@1.13.3
 ```
 
 ## 通用说明

@@ -16,7 +16,7 @@ Plugins are grouped via the GitHub topic [`dsh-plugin`](https://github.com/ShanH
 | Plugin | Stars | Version | Description |
 |---|---|---|---|
 | [dsh-plugin-security-review](https://github.com/ShanHaiFish/dsh-plugin-security-review) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-plugin-security-review?style=social) | v1.8.1 | Security-review gate for plugin installs: fail-safe review of `cordis_define`/`cordis_run` before `dsh plugin add` (security-first) |
-| [dsh-check-for-updates](https://github.com/ShanHaiFish/dsh-check-for-updates) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-check-for-updates?style=social) | v1.13.2 | DSH update checker: checks npm for the latest version on first open, bottom-left update popup + one-click **Update To** button |
+| [dsh-check-for-updates](https://github.com/ShanHaiFish/dsh-check-for-updates) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-check-for-updates?style=social) | v1.13.3 | DSH update checker: picks the actual highest npm version (semver ordering — RC ranks above Alpha), bottom-left update popup + **Schedule Update** two-phase detached updater (installs after DSH exits; npm exit-code / on-disk / koffi triple verification + broken-koffi self-heal) |
 | [dsh-plugin-manager-lite](https://github.com/ShanHaiFish/dsh-plugin-manager-lite) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-plugin-manager-lite?style=social) | v0.1.1 | Third-party plugin manager: list / enable / disable / uninstall / check updates / one-click npm install & upgrade (Settings → Plugins → Third-party) |
 | [dsh-theme-brick](https://github.com/ShanHaiFish/dsh-theme-brick) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/dsh-theme-brick?style=social) | v0.2.1 | DSH theme (Brick): warm plaster & fired-clay accent, mortar hairlines — a pure token overlay with zero global CSS, on/off switch in Settings |
 | [fexp-file-explorer](https://github.com/ShanHaiFish/fexp-file-explorer) | ![stars](https://img.shields.io/github/stars/ShanHaiFish/fexp-file-explorer?style=social) | v1.6.1 | Workspace file explorer in the left sidebar: browse dirs/files, preview files, open in OS file manager, add file references to the chat |
@@ -50,7 +50,7 @@ dsh plugin --profile web add fexp-file-explorer
 Install a specific version (`@version`):
 
 ```bash
-dsh plugin --profile web add dsh-check-for-updates@1.13.2
+dsh plugin --profile web add dsh-check-for-updates@1.13.3
 ```
 
 ## General Notes
